@@ -17,9 +17,23 @@ for (const link of links) {
   if (sectie) observer.observe(sectie);
 }
 
-// Contactformulier: nog niet gekoppeld aan een verzendservice.
+// Levensmoment-tegels en links met data-situatie vullen de keuze in het formulier alvast in.
 const contactForm = document.getElementById("contactformulier");
+const situatie = contactForm.elements.situatie;
+for (const link of document.querySelectorAll("[data-situatie]")) {
+  link.addEventListener("click", () => {
+    const optie = [...situatie.options].find((o) => o.text === link.dataset.situatie);
+    if (optie) situatie.value = optie.value;
+  });
+}
+
+// Terugbelformulier: nog niet gekoppeld aan een verzendservice.
+// Zodra het wel verstuurt, toon dan na succes:
+//   `Dank je, ${voornaam}! We bellen je binnen één werkdag.`
+const status = contactForm.querySelector(".form-status");
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  contactForm.querySelector(".form-status").textContent = "Het formulier is nog niet gekoppeld. Bel of mail ons direct.";
+  if (!contactForm.reportValidity()) return;
+  const voornaam = contactForm.elements.voornaam.value.trim();
+  status.textContent = `Dank je, ${voornaam}! Dit formulier is alleen nog niet gekoppeld, dus je bericht is niet verstuurd. Bel of mail ons even direct, dan helpen we je meteen.`;
 });

@@ -4,219 +4,522 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hypotheekadvies | Yord Financieel Advies</title>
-  <meta name="description" content="Bereken direct je maximale hypotheek en plan een gesprek met Yord Financieel Advies. Onafhankelijk hypotheekadvies voor particulieren en ondernemers.">
+  <meta name="description" content="Droomhuis gezien? Bereken in één minuut wat je kunt lenen en plan een gratis kennismaking met Yord. Onafhankelijk hypotheekadvies, met één vast aanspreekpunt.">
+  <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/rekentool.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
+  <!--
+    PLACEHOLDERS: alles tussen [vierkante haken] vult de eigenaar in.
+    Verzin nooit reviews, scores, jaartallen, namen, foto's of adressen.
+    Zoek in dit bestand op "[" om ze allemaal te vinden.
+    Telefoonnummer: vervang overal "[telefoon]" (ook in de tel:-links).
+  -->
+
+  <!-- Iconen: één set, ronde lijniconen -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.8 4.6-2.2 1.4a11 11 0 0 0 5.4 5.4l1.4-2.2 4.6 1.8v3a2 2 0 0 1-2.1 2A16 16 0 0 1 4.5 5.6a2 2 0 0 1 2-2.1z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
+    <symbol id="i-bigger" viewBox="0 0 24 24"><path d="M2.5 13 8 8.5l5.5 4.5"/><path d="M4 12v8h8v-8"/><path d="M11 9.5 16 5.5l5.5 4.5"/><path d="M19.5 8.5V20H12"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19.5 10.5A7.5 7.5 0 0 0 6 7.2"/><path d="M5.5 3.5v4h4"/><path d="M4.5 13.5A7.5 7.5 0 0 0 18 16.8"/><path d="M18.5 20.5v-4h-4"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5.5 18.5C4.5 10 9.5 4.5 19.5 4.5c.5 9.5-5 14.5-13 14"/><path d="M4 20l9-9"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12.5" rx="2.5"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 19.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></symbol>
+    <symbol id="i-split" viewBox="0 0 24 24"><path d="M12 21v-7.5L5.5 7"/><path d="M12 13.5 18.5 7"/><path d="M5 11.5V6.5h5"/><path d="M19 11.5V6.5h-5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><path d="M3 18.5h18"/><path d="M7 18.5a5 5 0 0 1 10 0"/><path d="M12 6v3"/><path d="M5.3 10.3l2 1.5"/><path d="M18.7 10.3l-2 1.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 19 17H10l-4.5 3.5V17H5a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 5 5z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 9h6M9 13h6M9 17h3"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"/><path d="M14 3.5v5h5"/><path d="M9 14l2 2 4-4"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4.5 19.5l1-4L16 5a2.1 2.1 0 0 1 3 3L8.5 18.5z"/><path d="M14 7l3 3"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4.5"/><path d="M11.2 12.3 20 3.5"/><path d="M16.5 7l2.5 2.5"/><path d="M14.5 9l2 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5l7.5 3V12c0 4.5-3.2 7.5-7.5 8.5-4.3-1-7.5-4-7.5-8.5V6.5z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></symbol>
+  </svg>
+
   <a class="skip-link" href="#main">Naar de inhoud</a>
 
   <header class="site-header">
     <div class="container">
-      <a href="#top" aria-label="Yord Financieel Advies, naar boven">
-        <img class="logo" src="assets/logo.png" alt="Yord Financieel Advies" width="200" height="64">
+      <a class="logo-link" href="#top" aria-label="Yord Financieel Advies, naar boven">
+        <!-- Bijgesneden versie van logo/logo.png; de header gebruikt dezelfde achtergrondkleur. -->
+        <img class="logo logo-img" src="assets/logo-header.png" width="686" height="310" alt="">
       </a>
       <nav class="nav" aria-label="Hoofdmenu">
-        <a href="#particulier">Particulier</a>
-        <a href="#zakelijk">Zakelijk</a>
+        <a href="#huis-kopen">Huis kopen</a>
+        <a href="#oversluiten">Oversluiten</a>
+        <a href="#ondernemers">Ondernemers</a>
         <a href="#verduurzamen">Verduurzamen</a>
         <a href="#over-ons">Over ons</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn-primary" href="#contact">Plan een gesprek</a>
+      <div class="header-actions">
+        <a class="phone-link" href="tel:[telefoon]"><svg class="icon"><use href="#i-phone"/></svg>[telefoon]</a>
+        <a class="btn btn-accent" href="#contact">Gratis kennismaking</a>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <div class="container hero" id="top">
-      <div>
-        <p class="eyebrow">Hypotheekadvies</p>
-        <h1 class="display">Weet in één minuut wat je kunt lenen</h1>
-        <p class="body-lg muted">Bereken je maximale hypotheek en plan daarna een gesprek. Persoonlijk, onafhankelijk en met heldere kosten vooraf.</p>
-        <ul class="usp">
-          <li>Onafhankelijk advies, alle grote aanbieders</li>
-          <li>Eén vast aanspreekpunt tot aan de notaris</li>
-          <li>Ook voor ondernemers en verduurzaming</li>
-        </ul>
-        <p class="hero-actions"><a class="btn btn-secondary" href="#particulier">Bekijk wat we doen</a></p>
-      </div>
-
-      <form class="calculator" id="rekentool" aria-labelledby="rekentool-titel" novalidate>
-        <h2 class="h3" id="rekentool-titel">Bereken je maximale hypotheek</h2>
-        <div class="calculator-grid">
-          <div class="field">
-            <label for="inkomen">Bruto jaarinkomen</label>
-            <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="inkomen" name="inkomen" inputmode="numeric" value="55.000"></div>
+    <!-- 1. Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-titel">
+      <div class="container">
+        <div class="hero-copy">
+          <h1 class="display" id="hero-titel">Droomhuis gezien? Ontdek in één minuut wat je kunt lenen.</h1>
+          <p class="body-lg">Daarna rekenen we het samen door, in gewone taal. Het eerste gesprek is altijd gratis en vrijblijvend.</p>
+          <ul class="checks">
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span>Eerste gesprek gratis</li>
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span><span>Onafhankelijk, <span class="ph">[x]</span>+ geldverstrekkers</span></li>
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span>Eén vast aanspreekpunt</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="#contact">Plan een gratis kennismaking</a>
+            <span class="alt">Of bel ons even: <a href="tel:[telefoon]">[telefoon]</a></span>
           </div>
-          <div class="field">
-            <label for="partnerInkomen">Inkomen partner</label>
-            <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="partnerInkomen" name="partnerInkomen" inputmode="numeric" placeholder="0"></div>
-          </div>
-          <div class="field">
-            <label for="rente">Hypotheekrente</label>
-            <div class="input-affix"><input class="input" id="rente" name="rente" inputmode="decimal" value="3,9"><span class="affix affix-end" aria-hidden="true">%</span></div>
-          </div>
-          <div class="field">
-            <label for="rentevastePeriode">Rentevaste periode</label>
-            <select class="input" id="rentevastePeriode" name="rentevastePeriode">
-              <option value="1">1 jaar</option>
-              <option value="5">5 jaar</option>
-              <option value="10" selected>10 jaar</option>
-              <option value="15">15 jaar</option>
-              <option value="20">20 jaar</option>
-              <option value="30">30 jaar</option>
-            </select>
-          </div>
+          <p class="review-badge"><strong class="signature-inline">Samen naar je sleutel.</strong><span class="ph">[Advieskeuze/Google score + aantal reviews]</span></p>
         </div>
 
-        <details>
-          <summary>Meer gegevens (studieschuld, leningen, energielabel)</summary>
+        <form class="calculator" id="rekentool" aria-labelledby="rekentool-titel" novalidate>
+          <h2 class="h2" id="rekentool-titel">Wat kun jij lenen?</h2>
+          <p class="small muted">Vul je inkomen in. De rest mag je gerust laten staan.</p>
           <div class="calculator-grid">
             <div class="field">
-              <label for="studieschuldMaand">Studieschuld, maandbedrag</label>
-              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="studieschuldMaand" name="studieschuldMaand" inputmode="numeric" placeholder="0"></div>
+              <label for="inkomen">Bruto jaarinkomen</label>
+              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="inkomen" name="inkomen" inputmode="numeric" value="55.000"></div>
             </div>
             <div class="field">
-              <label for="kredietlimiet">Andere leningen, kredietlimiet</label>
-              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="kredietlimiet" name="kredietlimiet" inputmode="numeric" placeholder="0"></div>
+              <label for="partnerInkomen">Inkomen partner</label>
+              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="partnerInkomen" name="partnerInkomen" inputmode="numeric" placeholder="0"></div>
             </div>
             <div class="field">
-              <label for="energielabel">Energielabel woning</label>
-              <select class="input" id="energielabel" name="energielabel">
-                <option>A++++</option><option>A+++</option><option>A++</option><option>A+</option>
-                <option>A</option><option>B</option><option selected>C</option><option>D</option>
-                <option>E</option><option>F</option><option>G</option>
+              <label for="rente">Hypotheekrente</label>
+              <div class="input-affix"><input class="input" id="rente" name="rente" inputmode="decimal" value="3,9"><span class="affix affix-end" aria-hidden="true">%</span></div>
+            </div>
+            <div class="field">
+              <label for="rentevastePeriode">Rentevaste periode</label>
+              <select class="input" id="rentevastePeriode" name="rentevastePeriode">
+                <option value="1">1 jaar</option>
+                <option value="5">5 jaar</option>
+                <option value="10" selected>10 jaar</option>
+                <option value="15">15 jaar</option>
+                <option value="20">20 jaar</option>
+                <option value="30">30 jaar</option>
               </select>
             </div>
-            <div class="field">
-              <label for="woningwaarde">Woningwaarde (optioneel)</label>
-              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="woningwaarde" name="woningwaarde" inputmode="numeric" placeholder="0"></div>
-            </div>
           </div>
-        </details>
 
-        <div class="calc-result" aria-live="polite">
-          <p class="small label">Je kunt maximaal lenen</p>
-          <p class="amount" data-output="maximaal">€ 0</p>
-          <dl>
-            <dt>Bruto maandlast</dt><dd data-output="maandlast"></dd>
-            <dt>Waarvan energielabel</dt><dd data-output="energielabel"></dd>
-            <dt>Getoetst met</dt><dd data-output="toetsrente"></dd>
-            <dt>NHG mogelijk</dt><dd data-output="nhg"></dd>
-          </dl>
-          <a class="btn btn-primary btn-block" href="#contact">Bespreek dit met een adviseur</a>
-        </div>
-        <p class="small muted calc-disclaimer">Indicatieve berekening op basis van vereenvoudigde leennormen. Je echte maximale hypotheek hangt af van je volledige situatie.</p>
-      </form>
-    </div>
+          <details>
+            <summary>Meer gegevens (studieschuld, leningen, energielabel)</summary>
+            <div class="calculator-grid">
+              <div class="field">
+                <label for="studieschuldMaand">Studieschuld, maandbedrag</label>
+                <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="studieschuldMaand" name="studieschuldMaand" inputmode="numeric" placeholder="0"></div>
+              </div>
+              <div class="field">
+                <label for="kredietlimiet">Andere leningen, kredietlimiet</label>
+                <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="kredietlimiet" name="kredietlimiet" inputmode="numeric" placeholder="0"></div>
+              </div>
+              <div class="field">
+                <label for="energielabel">Energielabel woning</label>
+                <select class="input" id="energielabel" name="energielabel">
+                  <option>A++++</option><option>A+++</option><option>A++</option><option>A+</option>
+                  <option>A</option><option>B</option><option selected>C</option><option>D</option>
+                  <option>E</option><option>F</option><option>G</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="woningwaarde">Woningwaarde <span class="optional">(optioneel)</span></label>
+                <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="woningwaarde" name="woningwaarde" inputmode="numeric" placeholder="0"></div>
+              </div>
+            </div>
+          </details>
 
-    <section class="section" id="particulier" aria-labelledby="particulier-titel">
+          <div class="calc-result" aria-live="polite">
+            <p class="small label">Je kunt ongeveer lenen</p>
+            <p class="amount" data-output="maximaal">€ 0</p>
+            <dl>
+              <dt>Bruto maandlast</dt><dd data-output="maandlast"></dd>
+              <dt>Waarvan energielabel</dt><dd data-output="energielabel"></dd>
+              <dt>Getoetst met</dt><dd data-output="toetsrente"></dd>
+              <dt>NHG mogelijk</dt><dd data-output="nhg"></dd>
+            </dl>
+            <a class="btn btn-accent btn-block" href="#contact">Bespreek dit gratis met ons</a>
+          </div>
+          <p class="small muted calc-disclaimer">Indicatieve berekening op basis van vereenvoudigde leennormen. Dit is een eerste indicatie. In een gesprek kijken we samen naar jouw volledige situatie.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 2. Wat is jouw plan? -->
+    <section class="section section-soft" id="huis-kopen" aria-labelledby="plan-titel">
       <div class="container">
-        <div class="section-head">
-          <div><p class="eyebrow">Particulier</p><h2 class="h1" id="particulier-titel">Hypotheekadvies voor je eigen huis</h2></div>
-          <p class="body-lg muted">Of je nu je eerste woning koopt of verder wilt: we rekenen je situatie door en vergelijken aanbieders, zodat je weet wat je kunt lenen en wat het per maand kost.</p>
+        <div class="section-intro">
+          <h2 class="h1" id="plan-titel">Wat is jouw plan?</h2>
+          <p class="body-lg muted">Iedereen komt met een eigen verhaal. Kies wat het beste bij jou past, dan weten we waar we beginnen.</p>
         </div>
-        <div class="cards">
-          <article class="card"><h3 class="h3">Eerste huis kopen</h3><p class="muted">Van maximale hypotheek tot startersvrijstelling en NHG: we lopen alles met je door voordat je gaat bieden.</p></article>
-          <article class="card"><h3 class="h3">Doorstromen</h3><p class="muted">Je huidige hypotheek meenemen, overbruggen of opnieuw afsluiten. We zetten de opties naast elkaar.</p></article>
-          <article class="card"><h3 class="h3">Oversluiten</h3><p class="muted">Loopt je rentevaste periode af of is de rente gedaald? We berekenen of oversluiten loont, inclusief boeterente.</p></article>
-          <article class="card"><h3 class="h3">Hypotheek verhogen</h3><p class="muted">Voor een verbouwing of uitbouw: we kijken hoeveel extra ruimte er is op basis van inkomen en woningwaarde.</p></article>
+        <ul class="tiles">
+          <li><a class="tile" href="#contact" data-situatie="Eerste huis kopen">
+            <span class="icon-badge"><svg class="icon"><use href="#i-home"/></svg></span>
+            <span class="tile-text"><span class="h3">Je eerste huis</span><p>Spannend! We leggen je stap voor stap uit wat je kunt lenen.</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+          <li><a class="tile" href="#contact" data-situatie="Groter wonen of doorstromen">
+            <span class="icon-badge"><svg class="icon"><use href="#i-bigger"/></svg></span>
+            <span class="tile-text"><span class="h3">Groter wonen</span><p>Je huidige huis verkopen en de volgende stap zetten.</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+          <li><a class="tile" href="#oversluiten">
+            <span class="icon-badge"><svg class="icon"><use href="#i-refresh"/></svg></span>
+            <span class="tile-text"><span class="h3">Oversluiten</span><p>Loopt je rentevaste periode af? We kijken of het slimmer kan.</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+          <li><a class="tile" href="#verduurzamen">
+            <span class="icon-badge"><svg class="icon"><use href="#i-leaf"/></svg></span>
+            <span class="tile-text"><span class="h3">Verbouwen of verduurzamen</span><p>Extra leenruimte voor isolatie, zonnepanelen of een uitbouw.</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+          <li><a class="tile" href="#ondernemers">
+            <span class="icon-badge"><svg class="icon"><use href="#i-briefcase"/></svg></span>
+            <span class="tile-text"><span class="h3">Ondernemer of zzp</span><p>Banken kijken net even anders. Wij weten wat ze willen zien.</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+          <li><a class="tile" href="#contact" data-situatie="Samenwonen of trouwen">
+            <span class="icon-badge"><svg class="icon"><use href="#i-heart"/></svg></span>
+            <span class="tile-text"><span class="h3">Samenwonen of trouwen</span><p>Samen kopen, of je partner bij de hypotheek? Goed om op een rij te zetten.</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+          <li><a class="tile" href="#contact" data-situatie="Uit elkaar">
+            <span class="icon-badge"><svg class="icon"><use href="#i-split"/></svg></span>
+            <span class="tile-text"><span class="h3">Uit elkaar</span><p>Kun je het huis houden? We zoeken het rustig samen uit.</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+          <li><a class="tile" href="#contact" data-situatie="Pensioen">
+            <span class="icon-badge"><svg class="icon"><use href="#i-sun"/></svg></span>
+            <span class="tile-text"><span class="h3">Richting pensioen</span><p>Blijven je woonlasten betaalbaar als je inkomen verandert?</p></span>
+            <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Verhaalblok: oversluiten -->
+    <section class="section section-warm" id="oversluiten" aria-labelledby="oversluiten-titel">
+      <div class="container story">
+        <div class="ph-photo story-photo" role="img" aria-label="Fotoplaceholder">[foto: brief van de bank op de keukentafel, met koffie. Neutrale stockfoto of eigen foto]</div>
+        <div class="stack-lg">
+          <h2 class="h1" id="oversluiten-titel">Je rentevaste periode loopt af. En nu?</h2>
+          <p class="lead">Er ligt een brief van de bank op de mat. Een nieuw rentevoorstel, met een datum waarop je moet reageren.</p>
+          <p>Tekenen is makkelijk. Maar is het ook slim? Wij zetten het voorstel naast wat andere geldverstrekkers bieden. Soms is blijven het beste. Soms scheelt overstappen flink per maand, ook als je de boeterente meetelt. Dan weet je het tenminste zeker.</p>
+          <p><a class="arrow-link" href="#contact" data-situatie="Einde rentevaste periode">Laat ons je rentevoorstel bekijken <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="zakelijk" aria-labelledby="zakelijk-titel">
-      <div class="container">
-        <div class="section-head">
-          <div><p class="eyebrow">Zakelijk</p><h2 class="h1" id="zakelijk-titel">Hypotheek als ondernemer</h2></div>
-          <p class="body-lg muted">Als zzp'er, ondernemer of DGA werkt een hypotheek anders. Geldverstrekkers kijken naar je jaarcijfers en verwachte inkomen. Wij weten welke stukken nodig zijn.</p>
+    <!-- 4. Ondernemers -->
+    <section class="section" id="ondernemers" aria-labelledby="ondernemers-titel">
+      <div class="container split">
+        <div class="stack-lg">
+          <h2 class="h1" id="ondernemers-titel">Ondernemer? Dan kijken banken net even anders.</h2>
+          <p class="body-lg muted">Als zzp'er, ondernemer of DGA heb je geen loonstrook die alles zegt. Geldverstrekkers kijken naar je jaarcijfers en naar wat je in de toekomst verdient. Wij weten welke stukken ze willen zien, en hoe je je inkomen zo sterk mogelijk laat zien.</p>
+          <div>
+            <p class="small muted">We helpen ook met:</p>
+            <ul class="pills" style="margin-top:8px">
+              <li>DGA-hypotheek</li>
+              <li>Bedrijfspand voor je eigen zaak</li>
+              <li>Een woning om te verhuren</li>
+            </ul>
+          </div>
+          <p><a class="arrow-link" href="#contact" data-situatie="Ondernemer of zzp">Bespreek jouw situatie <span class="arrow-badge"><svg class="icon"><use href="#i-arrow"/></svg></span></a></p>
         </div>
-        <div class="cards">
-          <article class="card"><h3 class="h3">Ondernemershypotheek</h3><p class="muted">Met jaarcijfers of een inkomensverklaring van een erkende rekenexpert bepalen we je toetsinkomen.</p></article>
-          <article class="card"><h3 class="h3">DGA-hypotheek</h3><p class="muted">Salaris, winstreserve en dividend: we brengen in kaart wat meetelt.</p></article>
-          <article class="card"><h3 class="h3">Bedrijfspand</h3><p class="muted">Financiering van een pand voor je eigen onderneming, met oog voor de zakelijke en fiscale kant.</p></article>
-          <article class="card"><h3 class="h3">Verhuurhypotheek</h3><p class="muted">Een woning kopen om te verhuren, op basis van de huuropbrengst en de waarde in verhuurde staat.</p></article>
+        <div class="checklist-card">
+          <h3 class="h3">Dit heb je meestal nodig</h3>
+          <ul class="checks">
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span><span>Je jaarcijfers van de afgelopen jaren</span></li>
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span><span>Je aangiftes inkomstenbelasting en de aanslagen</span></li>
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span><span>Óf een inkomensverklaring van een erkende rekenexpert: die berekent wat je gemiddeld verdient</span></li>
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span><span>Ben je DGA? Dan ook je salaris en de cijfers van je bv</span></li>
+          </ul>
+          <p class="note"><svg class="icon" style="color:var(--accent)"><use href="#i-heart"/></svg><span>Mist er een document? Geen ramp, dat regelen we samen.</span></p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="verduurzamen" aria-labelledby="verduurzamen-titel">
-      <div class="container">
-        <div class="section-head">
-          <div><p class="eyebrow">Verduurzamen</p><h2 class="h1" id="verduurzamen-titel">Meer lenen voor een zuiniger huis</h2></div>
-          <p class="body-lg muted">Een woning met een goed energielabel geeft extra leenruimte. En wie gaat verduurzamen, kan dat vaak meefinancieren in de hypotheek.</p>
+    <!-- 5. Verduurzamen -->
+    <section class="section section-soft" id="verduurzamen" aria-labelledby="verduurzamen-titel">
+      <div class="container split">
+        <div class="stack-lg">
+          <h2 class="h1" id="verduurzamen-titel">Een zuiniger huis geeft je meer leenruimte</h2>
+          <p class="body-lg muted">Hoe beter het energielabel, hoe meer je mag lenen. En ga je verduurzamen? Dan kun je dat vaak gewoon meefinancieren.</p>
+          <ul class="green-list">
+            <li><span class="icon-badge"><svg class="icon"><use href="#i-leaf"/></svg></span>
+              <div><h3 class="h3">Energiebespaarbudget</h3><p class="muted">Heeft je huis label E, F of G? Dan mag je extra lenen, als je dat geld aan verduurzamen besteedt.</p></div></li>
+            <li><span class="icon-badge"><svg class="icon"><use href="#i-home"/></svg></span>
+              <div><h3 class="h3">Bouwdepot</h3><p class="muted">Het geld voor isolatie, zonnepanelen of een warmtepomp staat apart. Je krijgt het uitbetaald als de factuur binnenkomt.</p></div></li>
+            <li><span class="icon-badge"><svg class="icon"><use href="#i-list"/></svg></span>
+              <div><h3 class="h3">Of het Warmtefonds?</h3><p class="muted">Soms is een lening van het Nationaal Warmtefonds voordeliger dan je hypotheek verhogen. Wij zetten ze voor je naast elkaar.</p></div></li>
+          </ul>
         </div>
-        <div class="cards">
-          <article class="card"><h3 class="h3">Extra leenruimte op label</h3><p class="muted">Hoe beter het energielabel, hoe meer je bovenop je maximale hypotheek mag lenen.</p></article>
-          <article class="card"><h3 class="h3">Energiebespaarbudget</h3><p class="muted">Bij label E, F of G kun je extra lenen als je dat geld aan verduurzaming besteedt.</p></article>
-          <article class="card"><h3 class="h3">Bouwdepot</h3><p class="muted">Het geld voor isolatie, zonnepanelen of een warmtepomp staat in een depot en wordt uitbetaald op factuur.</p></article>
-          <article class="card"><h3 class="h3">Warmtefonds</h3><p class="muted">We vergelijken financieren via de hypotheek met een lening van het Nationaal Warmtefonds.</p></article>
+        <div class="label-card">
+          <table class="label-table">
+            <caption class="h3">Extra leenruimte per energielabel</caption>
+            <thead><tr><th scope="col">Energielabel</th><th scope="col">Extra leenruimte</th></tr></thead>
+            <tbody>
+              <tr><td><span class="label-chip label-a4">A++++</span></td><td>€ 40.000</td></tr>
+              <tr><td><span class="label-chip label-a3">A+++</span></td><td>€ 30.000</td></tr>
+              <tr><td><span class="label-chip label-a2">A++ / A+</span></td><td>€ 20.000</td></tr>
+              <tr><td><span class="label-chip label-ab">A / B</span></td><td>€ 10.000</td></tr>
+              <tr><td><span class="label-chip label-cd">C / D</span></td><td>€ 5.000</td></tr>
+              <tr><td><span class="label-chip label-efg">E / F / G</span></td><td>€ 0</td></tr>
+            </tbody>
+          </table>
+          <p class="small muted">Het label telt al mee in de rekentool bovenaan, onder "Meer gegevens".</p>
         </div>
-        <table class="label-table">
-          <caption class="h3">Extra leenruimte per energielabel</caption>
-          <thead><tr><th scope="col">Energielabel</th><th scope="col">Extra leenruimte</th></tr></thead>
-          <tbody>
-            <tr><td>A++++</td><td>€ 40.000</td></tr>
-            <tr><td>A+++</td><td>€ 30.000</td></tr>
-            <tr><td>A++ / A+</td><td>€ 20.000</td></tr>
-            <tr><td>A / B</td><td>€ 10.000</td></tr>
-            <tr><td>C / D</td><td>€ 5.000</td></tr>
-            <tr><td>E / F / G</td><td>€ 0</td></tr>
-          </tbody>
-        </table>
       </div>
     </section>
 
-    <section class="section" id="over-ons" aria-labelledby="over-ons-titel">
-      <div class="container">
-        <div class="section-head">
-          <div><p class="eyebrow">Over ons</p><h2 class="h1" id="over-ons-titel">Over Yord Financieel Advies</h2></div>
-          <p class="body-lg muted">Yord is een onafhankelijk adviespraktijk. Je hebt één vast aanspreekpunt, van het eerste gesprek tot de afspraak bij de notaris. We zeggen vooraf wat het advies kost en waarom we een bepaalde hypotheek aanraden.</p>
+    <!-- 6. Over ons -->
+    <section class="section section-warm" id="over-ons" aria-labelledby="over-ons-titel">
+      <div class="container about">
+        <div class="ph-photo portrait" role="img" aria-label="Fotoplaceholder">[foto: portret Yord, lachend, natuurlijk licht]</div>
+        <div class="stack-lg">
+          <h2 class="h1" id="over-ons-titel">Hoi, wij zijn <span class="ph">[namen]</span></h2>
+          <p class="body-lg">Een huis kopen is een van de grootste beslissingen die je neemt. Wij vinden dat je dan een adviseur verdient die de tijd neemt, je in gewone taal uitlegt hoe het zit, en gewoon bereikbaar is.</p>
+          <p class="ph" style="display:block;padding:12px 16px">[persoonlijk verhaal: waarom we dit werk doen, waar we vandaan komen, iets menselijks zoals een hobby of de regio]</p>
+          <p>Bij ons heb je één vast aanspreekpunt, van het eerste gesprek tot de sleutel bij de notaris. En geen domme vragen. Echt niet.</p>
+          <ul class="badges" aria-label="Erkenningen">
+            <li><svg class="icon"><use href="#i-shield"/></svg><span class="ph">[Erkend Hypotheekadviseur]</span></li>
+            <li><svg class="icon"><use href="#i-shield"/></svg>AFM <span class="ph">[vergunningnummer]</span></li>
+            <li><svg class="icon"><use href="#i-shield"/></svg>Kifid <span class="ph">[aansluitnummer]</span></li>
+          </ul>
+          <a class="direct-line" href="tel:[telefoon]" style="text-decoration:none;color:inherit">
+            <span class="icon-badge"><svg class="icon"><use href="#i-phone"/></svg></span>
+            <span><span class="small muted">Bel ons direct</span><strong>[telefoon]</strong></span>
+          </a>
         </div>
-        <ol class="cards" style="list-style:none;padding:0;margin:0">
-          <li class="card"><p class="eyebrow">Stap 1</p><h3 class="h3">Kennismaking</h3><p class="muted">We bespreken je plannen en of we je kunnen helpen. Vrijblijvend.</p></li>
-          <li class="card"><p class="eyebrow">Stap 2</p><h3 class="h3">Inventarisatie</h3><p class="muted">Inkomen, uitgaven, wensen en risico's: we brengen je financiële situatie in kaart.</p></li>
-          <li class="card"><p class="eyebrow">Stap 3</p><h3 class="h3">Advies</h3><p class="muted">Je krijgt een onderbouwd advies met de hypotheek die het beste bij je past.</p></li>
-          <li class="card"><p class="eyebrow">Stap 4</p><h3 class="h3">Aanvraag tot notaris</h3><p class="muted">Wij regelen de aanvraag, controleren de offerte en begeleiden je tot de sleutel.</p></li>
+      </div>
+    </section>
+
+    <!-- 7. Onafhankelijkheid + logomuur -->
+    <section class="section" aria-labelledby="onafhankelijk-titel">
+      <div class="container">
+        <div class="section-intro center">
+          <h2 class="h1" id="onafhankelijk-titel">Wij vergelijken <span class="ph">[x]</span>+ geldverstrekkers</h2>
+          <p class="body-lg muted">Wij zijn niet gebonden aan één bank. Zo zoeken we de hypotheek die bij jou past, niet bij ons.</p>
+        </div>
+        <!-- Vervang door echte logo's (img met alt="naam geldverstrekker"), alleen van partijen waarmee Yord echt werkt. -->
+        <ul class="lender-wall" aria-label="Geldverstrekkers">
+          <li class="ph">[logo]</li><li class="ph">[logo]</li><li class="ph">[logo]</li>
+          <li class="ph">[logo]</li><li class="ph">[logo]</li><li class="ph">[logo]</li>
+        </ul>
+        <p class="independence-note center muted" style="text-align:center">Wij krijgen geen provisie van banken. Ons advies gaat over jou.</p>
+      </div>
+    </section>
+
+    <!-- 8. Reviews: VERBORGEN tot de eigenaar echte reviews aanlevert. Verwijder dan het hidden-attribuut.
+         Alleen echte reviews, met toestemming: quote, voornaam, plaats, maand/jaar. -->
+    <section class="section section-soft" id="reviews" aria-labelledby="reviews-titel" hidden>
+      <div class="container">
+        <div class="section-intro">
+          <h2 class="h1" id="reviews-titel">Wat klanten zeggen</h2>
+          <p class="body-lg muted"><span class="ph">[score]</span> op <span class="ph">[Advieskeuze/Google]</span>, op basis van <span class="ph">[aantal]</span> reviews.</p>
+        </div>
+        <ul class="reviews">
+          <li><figure class="review"><blockquote>“[review: quote]”</blockquote><figcaption>[naam, plaats] · [maand jaar]</figcaption></figure></li>
+          <li><figure class="review"><blockquote>“[review: quote]”</blockquote><figcaption>[naam, plaats] · [maand jaar]</figcaption></figure></li>
+          <li><figure class="review"><blockquote>“[review: quote]”</blockquote><figcaption>[naam, plaats] · [maand jaar]</figcaption></figure></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. Zo werken we samen -->
+    <section class="section section-soft" id="werkwijze" aria-labelledby="werkwijze-titel">
+      <div class="container">
+        <div class="section-intro">
+          <h2 class="h1" id="werkwijze-titel">Zo werken we samen</h2>
+          <p class="body-lg muted">Je weet bij elke stap waar je staat. En wat er daarna komt.</p>
+        </div>
+        <ol class="timeline">
+          <li><span class="step-dot"><svg class="icon"><use href="#i-chat"/></svg><span class="step-num">1</span></span>
+            <h3 class="h3">Kennismaken</h3><p>We bespreken je plannen, aan tafel of online. Gratis en vrijblijvend.</p></li>
+          <li><span class="step-dot"><svg class="icon"><use href="#i-list"/></svg><span class="step-num">2</span></span>
+            <h3 class="h3">Alles op een rij</h3><p>Inkomen, uitgaven, wensen. Mist er een document? Geen ramp.</p></li>
+          <li><span class="step-dot"><svg class="icon"><use href="#i-doc"/></svg><span class="step-num">3</span></span>
+            <h3 class="h3">Ons advies</h3><p>Op papier en in gewone taal. Met waarom we deze hypotheek aanraden.</p></li>
+          <li><span class="step-dot"><svg class="icon"><use href="#i-pen"/></svg><span class="step-num">4</span></span>
+            <h3 class="h3">Aanvraag en offerte</h3><p>Wij regelen de aanvraag en checken de offerte voordat je tekent.</p></li>
+          <li><span class="step-dot"><svg class="icon"><use href="#i-key"/></svg><span class="step-num">5</span></span>
+            <h3 class="h3">…en dan krijg je de sleutel</h3><p>We begeleiden je tot en met de notaris.</p></li>
         </ol>
       </div>
     </section>
 
-    <section class="section" id="contact" aria-labelledby="contact-titel">
-      <div class="container contact">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h2 class="h1" id="contact-titel">Plan een gesprek</h2>
-          <p class="body-lg muted">Laat je gegevens achter en we nemen binnen één werkdag contact op. Of bel of mail direct.</p>
-          <dl class="contact-details">
-            <div><dt class="small muted">Telefoon</dt><dd class="figure">[telefoonnummer]</dd></div>
-            <div><dt class="small muted">E-mail</dt><dd class="figure">[e-mailadres]</dd></div>
-            <div><dt class="small muted">Werkgebied</dt><dd class="figure">[regio / adres]</dd></div>
-          </dl>
+    <!-- 10. Wat kost het? -->
+    <section class="section" id="kosten" aria-labelledby="kosten-titel">
+      <div class="container">
+        <div class="section-intro">
+          <h2 class="h1" id="kosten-titel">Wat kost het?</h2>
+          <p class="body-lg muted">Je weet vooraf precies wat ons advies kost. Geen verrassingen achteraf.</p>
         </div>
-        <form class="contact-form" id="contactformulier">
-          <div class="field"><label for="naam">Naam</label><input class="input" id="naam" name="naam" autocomplete="name" required></div>
-          <div class="field"><label for="email">E-mail</label><input class="input" id="email" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="telefoon">Telefoon</label><input class="input" id="telefoon" name="telefoon" type="tel" autocomplete="tel"></div>
+        <ul class="fees">
+          <li class="fee fee-free"><h3 class="h3">Kennismaking</h3><p class="price">Gratis</p><p>We kijken samen of we je kunnen helpen. Je zit nergens aan vast.</p></li>
+          <li class="fee"><h3 class="h3">Huis kopen</h3><p class="price"><span class="ph">[€ bedrag]</span></p><p>Advies en bemiddeling voor je hypotheek, van berekening tot notaris.</p></li>
+          <li class="fee"><h3 class="h3">Oversluiten</h3><p class="price"><span class="ph">[€ bedrag]</span></p><p>Wij vergelijken je huidige hypotheek met nieuwe aanbiedingen, inclusief boeterente.</p></li>
+          <li class="fee"><h3 class="h3">Ondernemers</h3><p class="price"><span class="ph">[€ bedrag]</span></p><p>Voor zzp'ers, ondernemers en DGA's, met de extra stukken die erbij horen.</p></li>
+        </ul>
+        <p class="fees-note small muted">Bedragen zijn indicatief. In de kennismaking hoor je wat het voor jouw situatie precies kost.</p>
+      </div>
+    </section>
+
+    <!-- 11. FAQ -->
+    <section class="section" id="vragen" aria-labelledby="vragen-titel" style="padding-top:0">
+      <div class="container faq-wrap">
+        <div class="stack">
+          <h2 class="h1" id="vragen-titel">Vragen die we vaak horen</h2>
+          <p class="body-lg muted">Staat jouw vraag er niet bij? Bel ons gerust: <a href="tel:[telefoon]">[telefoon]</a>.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Heb ik een vast contract nodig?<svg class="icon"><use href="#i-plus"/></svg></summary>
+            <p>Niet altijd. Met een tijdelijk contract kan het vaak ook, bijvoorbeeld met een intentieverklaring van je werkgever of een perspectiefverklaring. Wij kijken welke route bij jou past.</p>
+          </details>
+          <details>
+            <summary>Kan ik als zzp'er een hypotheek krijgen?<svg class="icon"><use href="#i-plus"/></svg></summary>
+            <p>Ja. Banken kijken dan naar je jaarcijfers, of naar een inkomensverklaring van een erkende rekenexpert. Wij weten welke stukken ze willen zien en helpen je die te verzamelen.</p>
+          </details>
+          <details>
+            <summary>Wat als mijn rentevaste periode afloopt?<svg class="icon"><use href="#i-plus"/></svg></summary>
+            <p>Je bank stuurt je meestal een paar maanden van tevoren een rentevoorstel. Teken niet meteen. Wij vergelijken het voorstel met andere aanbieders, zodat je weet of verlengen of overstappen slimmer is.</p>
+          </details>
+          <details>
+            <summary>Zit ik ergens aan vast na het eerste gesprek?<svg class="icon"><use href="#i-plus"/></svg></summary>
+            <p>Nee. De kennismaking is gratis en vrijblijvend. Pas als je kiest voor ons advies spreken we de kosten af, en die weet je dan vooraf.</p>
+          </details>
+          <details>
+            <summary>Wat is NHG eigenlijk?<svg class="icon"><use href="#i-plus"/></svg></summary>
+            <p>NHG staat voor Nationale Hypotheek Garantie. Kun je door pech, zoals werkloosheid of een scheiding, je huis niet meer betalen en blijft er na verkoop een schuld over? Dan kan NHG die kwijtschelden. Vaak krijg je met NHG ook een lagere rente. Het kan tot de NHG-grens van € 470.000.</p>
+          </details>
+          <details>
+            <summary>Hoe precies is de rekentool?<svg class="icon"><use href="#i-plus"/></svg></summary>
+            <p>Het is een eerste indicatie op basis van vereenvoudigde leennormen. Wat je echt kunt lenen hangt af van je hele situatie, zoals je contract, eventuele schulden en de woning zelf. Dat zoeken we samen uit.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Afsluitende CTA + terugbelformulier -->
+    <section class="section closing" id="contact" aria-labelledby="contact-titel">
+      <div class="container">
+        <div class="stack-lg">
+          <h2 class="h1" id="contact-titel">Klaar voor de volgende stap?</h2>
+          <p class="signature">Samen naar je sleutel.</p>
+          <p class="body-lg">Laat je naam en nummer achter, dan bellen we je terug. Op werkdagen meestal binnen <span class="ph">[x]</span> uur. Het eerste gesprek is gratis en vrijblijvend.</p>
+          <ul class="contact-lines">
+            <li><svg class="icon"><use href="#i-phone"/></svg><span>Liever zelf bellen? <a href="tel:[telefoon]"><strong>[telefoon]</strong></a></span></li>
+            <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:[e-mailadres]">[e-mailadres]</a></li>
+            <li><svg class="icon"><use href="#i-clock"/></svg><span class="ph">[openingstijden, bijv. ook 's avonds of online, als dat klopt]</span></li>
+            <li><svg class="icon"><use href="#i-pin"/></svg><span class="ph">[adres / werkgebied]</span></li>
+          </ul>
+        </div>
+
+        <form class="callback" id="contactformulier" aria-labelledby="terugbel-titel" novalidate>
+          <h3 class="h2 full" id="terugbel-titel">Zullen we kennismaken?</h3>
           <div class="field">
-            <label for="onderwerp">Onderwerp</label>
-            <select class="input" id="onderwerp" name="onderwerp">
-              <option>Particulier</option><option>Zakelijk</option><option>Verduurzamen</option><option>Iets anders</option>
+            <label for="voornaam">Voornaam</label>
+            <input class="input" id="voornaam" name="voornaam" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="telefoon">Telefoonnummer</label>
+            <input class="input" id="telefoon" name="telefoon" type="tel" autocomplete="tel" required aria-describedby="telefoon-hint">
+          </div>
+          <p class="full hint small muted" id="telefoon-hint" style="margin-top:-8px">Je telefoonnummer gebruiken we alleen om je terug te bellen.</p>
+          <div class="field full">
+            <label for="email">E-mail <span class="optional">(optioneel)</span></label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field full">
+            <label for="situatie">Waar kunnen we je mee helpen?</label>
+            <select class="input" id="situatie" name="situatie">
+              <option>Ik ben aan het oriënteren</option>
+              <option>Eerste huis kopen</option>
+              <option>Groter wonen of doorstromen</option>
+              <option>Ik heb een woning gekocht</option>
+              <option>Hypotheek oversluiten</option>
+              <option>Einde rentevaste periode</option>
+              <option>Verbouwen of verduurzamen</option>
+              <option>Ondernemer of zzp</option>
+              <option>Samenwonen of trouwen</option>
+              <option>Uit elkaar</option>
+              <option>Pensioen</option>
+              <option>Andere vraag</option>
             </select>
           </div>
-          <div class="field full"><label for="bericht">Bericht</label><textarea class="input" id="bericht" name="bericht"></textarea></div>
-          <div class="full"><button class="btn btn-primary" type="submit">Verstuur</button><span class="small muted form-status" role="status"></span></div>
+          <div class="field full">
+            <label for="bericht">Wil je alvast iets kwijt? <span class="optional">(optioneel)</span></label>
+            <textarea class="input" id="bericht" name="bericht" rows="3"></textarea>
+          </div>
+          <div class="full">
+            <button class="btn btn-accent btn-block" type="submit">Ja, bel me terug</button>
+          </div>
+          <p class="full reassure">Gratis en vrijblijvend. Je zit nergens aan vast.</p>
+          <p class="full form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">© Yord Financieel Advies · [KvK-nummer] · [AFM-vergunningnummer]</div>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <svg class="logo" viewBox="0 0 172 64" role="img" aria-label="Yord Financieel Advies" style="color:var(--ink)">
+            <path class="logo-arm" d="M3 13h16l13.5 25.5-5.5 9z"/>
+            <path class="logo-pijl" d="M27 62V45.5L41.5 22 36.5 18.5 56.5 9.5 57.5 31.5 52.5 28 38.5 50.5V62z"/>
+            <text class="logo-woord" x="60" y="47" textLength="108" lengthAdjust="spacingAndGlyphs">ORD</text>
+            <text class="logo-sub" x="61" y="61" textLength="106" lengthAdjust="spacingAndGlyphs">FINANCIEEL ADVIES</text>
+          </svg>
+          <!-- Signatuurregel (docs/personality.md §4.1), ook in de hero en de afsluitende CTA. De eigenaar kiest de definitieve. -->
+          <p class="signature">Samen naar je sleutel.</p>
+          <p class="small muted" style="margin-top:8px"><span class="ph">[Advieskeuze/Google score]</span></p>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="tel:[telefoon]">[telefoon]</a></li>
+            <li><a href="mailto:[e-mailadres]">[e-mailadres]</a></li>
+            <li><span class="ph">[adres, regio]</span></li>
+            <li><span class="ph">[openingstijden]</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Waar we je mee helpen</h2>
+          <ul>
+            <li><a href="#huis-kopen">Huis kopen</a></li>
+            <li><a href="#oversluiten">Oversluiten</a></li>
+            <li><a href="#ondernemers">Ondernemers</a></li>
+            <li><a href="#verduurzamen">Verduurzamen</a></li>
+            <li><a href="#kosten">Wat kost het?</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Gegevens</h2>
+          <ul>
+            <li>KvK <span class="ph">[nummer]</span></li>
+            <li>AFM <span class="ph">[vergunningnummer]</span></li>
+            <li>Kifid <span class="ph">[aansluitnummer]</span></li>
+            <li><a href="[link privacyverklaring]">Privacyverklaring</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-bottom">© Yord Financieel Advies</p>
+    </div>
   </footer>
+
+  <!-- Altijd bereikbaar op mobiel -->
+  <nav class="mobile-bar" aria-label="Snel contact">
+    <a class="btn btn-outline" href="tel:[telefoon]"><svg class="icon"><use href="#i-phone"/></svg>Bel</a>
+    <a class="btn btn-accent" href="#contact"><svg class="icon"><use href="#i-calendar"/></svg>Afspraak</a>
+  </nav>
 </body>
 </html>
