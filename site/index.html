@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hypotheekadvies | Yord Financieel Advies</title>
+  <meta name="description" content="Bereken direct je maximale hypotheek en plan een gesprek met Yord Financieel Advies. Onafhankelijk hypotheekadvies voor particulieren en ondernemers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/rekentool.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Naar de inhoud</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="#top" aria-label="Yord Financieel Advies, naar boven">
+        <img class="logo" src="assets/logo.png" alt="Yord Financieel Advies" width="200" height="64">
+      </a>
+      <nav class="nav" aria-label="Hoofdmenu">
+        <a href="#particulier">Particulier</a>
+        <a href="#zakelijk">Zakelijk</a>
+        <a href="#verduurzamen">Verduurzamen</a>
+        <a href="#over-ons">Over ons</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Plan een gesprek</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container hero" id="top">
+      <div>
+        <p class="eyebrow">Hypotheekadvies</p>
+        <h1 class="display">Weet in één minuut wat je kunt lenen</h1>
+        <p class="body-lg muted">Bereken je maximale hypotheek en plan daarna een gesprek. Persoonlijk, onafhankelijk en met heldere kosten vooraf.</p>
+        <ul class="usp">
+          <li>Onafhankelijk advies, alle grote aanbieders</li>
+          <li>Eén vast aanspreekpunt tot aan de notaris</li>
+          <li>Ook voor ondernemers en verduurzaming</li>
+        </ul>
+        <p class="hero-actions"><a class="btn btn-secondary" href="#particulier">Bekijk wat we doen</a></p>
+      </div>
+
+      <form class="calculator" id="rekentool" aria-labelledby="rekentool-titel" novalidate>
+        <h2 class="h3" id="rekentool-titel">Bereken je maximale hypotheek</h2>
+        <div class="calculator-grid">
+          <div class="field">
+            <label for="inkomen">Bruto jaarinkomen</label>
+            <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="inkomen" name="inkomen" inputmode="numeric" value="55.000"></div>
+          </div>
+          <div class="field">
+            <label for="partnerInkomen">Inkomen partner</label>
+            <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="partnerInkomen" name="partnerInkomen" inputmode="numeric" placeholder="0"></div>
+          </div>
+          <div class="field">
+            <label for="rente">Hypotheekrente</label>
+            <div class="input-affix"><input class="input" id="rente" name="rente" inputmode="decimal" value="3,9"><span class="affix affix-end" aria-hidden="true">%</span></div>
+          </div>
+          <div class="field">
+            <label for="rentevastePeriode">Rentevaste periode</label>
+            <select class="input" id="rentevastePeriode" name="rentevastePeriode">
+              <option value="1">1 jaar</option>
+              <option value="5">5 jaar</option>
+              <option value="10" selected>10 jaar</option>
+              <option value="15">15 jaar</option>
+              <option value="20">20 jaar</option>
+              <option value="30">30 jaar</option>
+            </select>
+          </div>
+        </div>
+
+        <details>
+          <summary>Meer gegevens (studieschuld, leningen, energielabel)</summary>
+          <div class="calculator-grid">
+            <div class="field">
+              <label for="studieschuldMaand">Studieschuld, maandbedrag</label>
+              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="studieschuldMaand" name="studieschuldMaand" inputmode="numeric" placeholder="0"></div>
+            </div>
+            <div class="field">
+              <label for="kredietlimiet">Andere leningen, kredietlimiet</label>
+              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="kredietlimiet" name="kredietlimiet" inputmode="numeric" placeholder="0"></div>
+            </div>
+            <div class="field">
+              <label for="energielabel">Energielabel woning</label>
+              <select class="input" id="energielabel" name="energielabel">
+                <option>A++++</option><option>A+++</option><option>A++</option><option>A+</option>
+                <option>A</option><option>B</option><option selected>C</option><option>D</option>
+                <option>E</option><option>F</option><option>G</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="woningwaarde">Woningwaarde (optioneel)</label>
+              <div class="input-affix"><span class="affix affix-start" aria-hidden="true">€</span><input class="input" id="woningwaarde" name="woningwaarde" inputmode="numeric" placeholder="0"></div>
+            </div>
+          </div>
+        </details>
+
+        <div class="calc-result" aria-live="polite">
+          <p class="small label">Je kunt maximaal lenen</p>
+          <p class="amount" data-output="maximaal">€ 0</p>
+          <dl>
+            <dt>Bruto maandlast</dt><dd data-output="maandlast"></dd>
+            <dt>Waarvan energielabel</dt><dd data-output="energielabel"></dd>
+            <dt>Getoetst met</dt><dd data-output="toetsrente"></dd>
+            <dt>NHG mogelijk</dt><dd data-output="nhg"></dd>
+          </dl>
+          <a class="btn btn-primary btn-block" href="#contact">Bespreek dit met een adviseur</a>
+        </div>
+        <p class="small muted calc-disclaimer">Indicatieve berekening op basis van vereenvoudigde leennormen. Je echte maximale hypotheek hangt af van je volledige situatie.</p>
+      </form>
+    </div>
+
+    <section class="section" id="particulier" aria-labelledby="particulier-titel">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Particulier</p><h2 class="h1" id="particulier-titel">Hypotheekadvies voor je eigen huis</h2></div>
+          <p class="body-lg muted">Of je nu je eerste woning koopt of verder wilt: we rekenen je situatie door en vergelijken aanbieders, zodat je weet wat je kunt lenen en wat het per maand kost.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><h3 class="h3">Eerste huis kopen</h3><p class="muted">Van maximale hypotheek tot startersvrijstelling en NHG: we lopen alles met je door voordat je gaat bieden.</p></article>
+          <article class="card"><h3 class="h3">Doorstromen</h3><p class="muted">Je huidige hypotheek meenemen, overbruggen of opnieuw afsluiten. We zetten de opties naast elkaar.</p></article>
+          <article class="card"><h3 class="h3">Oversluiten</h3><p class="muted">Loopt je rentevaste periode af of is de rente gedaald? We berekenen of oversluiten loont, inclusief boeterente.</p></article>
+          <article class="card"><h3 class="h3">Hypotheek verhogen</h3><p class="muted">Voor een verbouwing of uitbouw: we kijken hoeveel extra ruimte er is op basis van inkomen en woningwaarde.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="zakelijk" aria-labelledby="zakelijk-titel">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Zakelijk</p><h2 class="h1" id="zakelijk-titel">Hypotheek als ondernemer</h2></div>
+          <p class="body-lg muted">Als zzp'er, ondernemer of DGA werkt een hypotheek anders. Geldverstrekkers kijken naar je jaarcijfers en verwachte inkomen. Wij weten welke stukken nodig zijn.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><h3 class="h3">Ondernemershypotheek</h3><p class="muted">Met jaarcijfers of een inkomensverklaring van een erkende rekenexpert bepalen we je toetsinkomen.</p></article>
+          <article class="card"><h3 class="h3">DGA-hypotheek</h3><p class="muted">Salaris, winstreserve en dividend: we brengen in kaart wat meetelt.</p></article>
+          <article class="card"><h3 class="h3">Bedrijfspand</h3><p class="muted">Financiering van een pand voor je eigen onderneming, met oog voor de zakelijke en fiscale kant.</p></article>
+          <article class="card"><h3 class="h3">Verhuurhypotheek</h3><p class="muted">Een woning kopen om te verhuren, op basis van de huuropbrengst en de waarde in verhuurde staat.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="verduurzamen" aria-labelledby="verduurzamen-titel">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Verduurzamen</p><h2 class="h1" id="verduurzamen-titel">Meer lenen voor een zuiniger huis</h2></div>
+          <p class="body-lg muted">Een woning met een goed energielabel geeft extra leenruimte. En wie gaat verduurzamen, kan dat vaak meefinancieren in de hypotheek.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><h3 class="h3">Extra leenruimte op label</h3><p class="muted">Hoe beter het energielabel, hoe meer je bovenop je maximale hypotheek mag lenen.</p></article>
+          <article class="card"><h3 class="h3">Energiebespaarbudget</h3><p class="muted">Bij label E, F of G kun je extra lenen als je dat geld aan verduurzaming besteedt.</p></article>
+          <article class="card"><h3 class="h3">Bouwdepot</h3><p class="muted">Het geld voor isolatie, zonnepanelen of een warmtepomp staat in een depot en wordt uitbetaald op factuur.</p></article>
+          <article class="card"><h3 class="h3">Warmtefonds</h3><p class="muted">We vergelijken financieren via de hypotheek met een lening van het Nationaal Warmtefonds.</p></article>
+        </div>
+        <table class="label-table">
+          <caption class="h3">Extra leenruimte per energielabel</caption>
+          <thead><tr><th scope="col">Energielabel</th><th scope="col">Extra leenruimte</th></tr></thead>
+          <tbody>
+            <tr><td>A++++</td><td>€ 40.000</td></tr>
+            <tr><td>A+++</td><td>€ 30.000</td></tr>
+            <tr><td>A++ / A+</td><td>€ 20.000</td></tr>
+            <tr><td>A / B</td><td>€ 10.000</td></tr>
+            <tr><td>C / D</td><td>€ 5.000</td></tr>
+            <tr><td>E / F / G</td><td>€ 0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="over-ons" aria-labelledby="over-ons-titel">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Over ons</p><h2 class="h1" id="over-ons-titel">Over Yord Financieel Advies</h2></div>
+          <p class="body-lg muted">Yord is een onafhankelijk adviespraktijk. Je hebt één vast aanspreekpunt, van het eerste gesprek tot de afspraak bij de notaris. We zeggen vooraf wat het advies kost en waarom we een bepaalde hypotheek aanraden.</p>
+        </div>
+        <ol class="cards" style="list-style:none;padding:0;margin:0">
+          <li class="card"><p class="eyebrow">Stap 1</p><h3 class="h3">Kennismaking</h3><p class="muted">We bespreken je plannen en of we je kunnen helpen. Vrijblijvend.</p></li>
+          <li class="card"><p class="eyebrow">Stap 2</p><h3 class="h3">Inventarisatie</h3><p class="muted">Inkomen, uitgaven, wensen en risico's: we brengen je financiële situatie in kaart.</p></li>
+          <li class="card"><p class="eyebrow">Stap 3</p><h3 class="h3">Advies</h3><p class="muted">Je krijgt een onderbouwd advies met de hypotheek die het beste bij je past.</p></li>
+          <li class="card"><p class="eyebrow">Stap 4</p><h3 class="h3">Aanvraag tot notaris</h3><p class="muted">Wij regelen de aanvraag, controleren de offerte en begeleiden je tot de sleutel.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-titel">
+      <div class="container contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 class="h1" id="contact-titel">Plan een gesprek</h2>
+          <p class="body-lg muted">Laat je gegevens achter en we nemen binnen één werkdag contact op. Of bel of mail direct.</p>
+          <dl class="contact-details">
+            <div><dt class="small muted">Telefoon</dt><dd class="figure">[telefoonnummer]</dd></div>
+            <div><dt class="small muted">E-mail</dt><dd class="figure">[e-mailadres]</dd></div>
+            <div><dt class="small muted">Werkgebied</dt><dd class="figure">[regio / adres]</dd></div>
+          </dl>
+        </div>
+        <form class="contact-form" id="contactformulier">
+          <div class="field"><label for="naam">Naam</label><input class="input" id="naam" name="naam" autocomplete="name" required></div>
+          <div class="field"><label for="email">E-mail</label><input class="input" id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="telefoon">Telefoon</label><input class="input" id="telefoon" name="telefoon" type="tel" autocomplete="tel"></div>
+          <div class="field">
+            <label for="onderwerp">Onderwerp</label>
+            <select class="input" id="onderwerp" name="onderwerp">
+              <option>Particulier</option><option>Zakelijk</option><option>Verduurzamen</option><option>Iets anders</option>
+            </select>
+          </div>
+          <div class="field full"><label for="bericht">Bericht</label><textarea class="input" id="bericht" name="bericht"></textarea></div>
+          <div class="full"><button class="btn btn-primary" type="submit">Verstuur</button><span class="small muted form-status" role="status"></span></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© Yord Financieel Advies · [KvK-nummer] · [AFM-vergunningnummer]</div>
+  </footer>
+</body>
+</html>
