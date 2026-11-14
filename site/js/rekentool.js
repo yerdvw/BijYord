@@ -115,6 +115,26 @@ function initRekentool(form) {
 
   form.addEventListener("input", toon);
   form.addEventListener("change", toon);
-  form.addEventListener("submit", (e) => e.preventDefault());
   toon();
+
+  // Invoer en uitkomst als leesbare regels, voor de e-mail bij een terugbelverzoek.
+  return function samenvatting() {
+    const i = invoer();
+    const r = berekenMaximaleHypotheek(i);
+    return {
+      "Bruto jaarinkomen": euro.format(i.inkomen),
+      "Inkomen partner": euro.format(i.partnerInkomen),
+      "Hypotheekrente": `${getal.format(i.rente)}%`,
+      "Rentevaste periode": `${i.rentevastePeriode} jaar`,
+      "Studieschuld per maand": euro.format(i.studieschuldMaand),
+      "Kredietlimiet andere leningen": euro.format(i.kredietlimiet),
+      "Energielabel": i.energielabel,
+      "Woningwaarde": i.woningwaarde ? euro.format(i.woningwaarde) : "niet ingevuld",
+      "Indicatie maximale hypotheek": euro.format(r.maximaal),
+      "Bruto maandlast": euro.format(Math.round(r.brutoMaandlast)),
+      "Waarvan energielabel": euro.format(r.energielabelDeel),
+      "Getoetst met": `${getal.format(r.toetsrente)}%`,
+      "NHG mogelijk": r.maximaal === 0 ? "—" : r.nhgMogelijk ? "Ja" : "Nee",
+    };
+  };
 }

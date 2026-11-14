@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/web3forms.js" defer></script>
   <script src="js/rekentool.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
@@ -18,7 +20,6 @@
     PLACEHOLDERS: alles tussen [vierkante haken] vult de eigenaar in.
     Verzin nooit reviews, scores, jaartallen, namen, foto's of adressen.
     Zoek in dit bestand op "[" om ze allemaal te vinden.
-    Telefoonnummer: vervang overal "[telefoon]" (ook in de tel:-links).
   -->
 
   <!-- Iconen: één set, ronde lijniconen -->
@@ -64,7 +65,7 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="header-actions">
-        <a class="phone-link" href="tel:[telefoon]"><svg class="icon"><use href="#i-phone"/></svg>[telefoon]</a>
+        <a class="phone-link" href="tel:+31645236143"><svg class="icon"><use href="#i-phone"/></svg>06 45 23 61 43</a>
         <a class="btn btn-accent" href="#contact">Gratis kennismaking</a>
       </div>
     </div>
@@ -79,14 +80,14 @@
           <p class="body-lg">Daarna rekenen we het samen door, in gewone taal. Het eerste gesprek is altijd gratis en vrijblijvend.</p>
           <ul class="checks">
             <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span>Eerste gesprek gratis</li>
-            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span><span>Onafhankelijk, <span class="ph">[x]</span>+ geldverstrekkers</span></li>
+            <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span><span>Onafhankelijk, 40+ geldverstrekkers</span></li>
             <li><span class="check-dot"><svg class="icon"><use href="#i-check"/></svg></span>Eén vast aanspreekpunt</li>
           </ul>
           <div class="hero-actions">
             <a class="btn btn-accent" href="#contact">Plan een gratis kennismaking</a>
-            <span class="alt">Of bel ons even: <a href="tel:[telefoon]">[telefoon]</a></span>
+            <span class="alt">Of bel ons even: <a href="tel:+31645236143">06 45 23 61 43</a></span>
           </div>
-          <p class="review-badge"><strong class="signature-inline">Samen naar je sleutel.</strong><span class="ph">[Advieskeuze/Google score + aantal reviews]</span></p>
+          <p class="review-badge"><strong class="signature-inline">Samen naar je sleutel.</strong><a class="review-score" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 op Google · 5 reviews</a></p>
         </div>
 
         <form class="calculator" id="rekentool" aria-labelledby="rekentool-titel" novalidate>
@@ -153,8 +154,28 @@
               <dt>Getoetst met</dt><dd data-output="toetsrente"></dd>
               <dt>NHG mogelijk</dt><dd data-output="nhg"></dd>
             </dl>
-            <a class="btn btn-accent btn-block" href="#contact">Bespreek dit gratis met ons</a>
           </div>
+          <fieldset class="calc-contact">
+            <legend class="h3">Bespreek dit gratis met ons</legend>
+            <p class="small muted">Laat je gegevens achter, dan bellen we je terug en nemen we deze berekening mee.</p>
+            <div class="calculator-grid">
+              <div class="field">
+                <label for="rt-voornaam">Voornaam</label>
+                <input class="input" id="rt-voornaam" name="voornaam" autocomplete="given-name" required>
+              </div>
+              <div class="field">
+                <label for="rt-telefoon">Telefoonnummer</label>
+                <input class="input" id="rt-telefoon" name="telefoon" type="tel" autocomplete="tel" required>
+              </div>
+              <div class="field full">
+                <label for="rt-email">E-mail <span class="optional">(optioneel)</span></label>
+                <input class="input" id="rt-email" name="email" type="email" autocomplete="email">
+              </div>
+            </div>
+            <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-accent btn-block" type="submit">Ja, bel me terug</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </fieldset>
           <p class="small muted calc-disclaimer">Indicatieve berekening op basis van vereenvoudigde leennormen. Dit is een eerste indicatie. In een gesprek kijken we samen naar jouw volledige situatie.</p>
         </form>
       </div>
@@ -293,9 +314,9 @@
             <li><svg class="icon"><use href="#i-shield"/></svg>AFM <span class="ph">[vergunningnummer]</span></li>
             <li><svg class="icon"><use href="#i-shield"/></svg>Kifid <span class="ph">[aansluitnummer]</span></li>
           </ul>
-          <a class="direct-line" href="tel:[telefoon]" style="text-decoration:none;color:inherit">
+          <a class="direct-line" href="tel:+31645236143" style="text-decoration:none;color:inherit">
             <span class="icon-badge"><svg class="icon"><use href="#i-phone"/></svg></span>
-            <span><span class="small muted">Bel ons direct</span><strong>[telefoon]</strong></span>
+            <span><span class="small muted">Bel ons direct</span><strong>06 45 23 61 43</strong></span>
           </a>
         </div>
       </div>
@@ -305,31 +326,54 @@
     <section class="section" aria-labelledby="onafhankelijk-titel">
       <div class="container">
         <div class="section-intro center">
-          <h2 class="h1" id="onafhankelijk-titel">Wij vergelijken <span class="ph">[x]</span>+ geldverstrekkers</h2>
+          <h2 class="h1" id="onafhankelijk-titel">Wij vergelijken 40+ geldverstrekkers</h2>
           <p class="body-lg muted">Wij zijn niet gebonden aan één bank. Zo zoeken we de hypotheek die bij jou past, niet bij ons.</p>
         </div>
-        <!-- Vervang door echte logo's (img met alt="naam geldverstrekker"), alleen van partijen waarmee Yord echt werkt. -->
-        <ul class="lender-wall" aria-label="Geldverstrekkers">
-          <li class="ph">[logo]</li><li class="ph">[logo]</li><li class="ph">[logo]</li>
-          <li class="ph">[logo]</li><li class="ph">[logo]</li><li class="ph">[logo]</li>
-        </ul>
+        <!-- Logolint: main.js dupliceert de lijst voor een naadloze loop. Alleen partijen waarmee Yord echt werkt. -->
+        <div class="lender-marquee" data-marquee>
+          <div class="lender-track">
+            <ul class="lender-list" aria-label="Geldverstrekkers waarmee we vergelijken">
+              <li><img src="assets/geldverstrekkers/ing.svg" alt="ING" loading="lazy"></li>
+              <li style="--h:64px"><img src="assets/geldverstrekkers/rabobank.svg" alt="Rabobank" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/abnamro.svg" alt="ABN AMRO" loading="lazy"></li>
+              <li style="--h:28px"><img src="assets/geldverstrekkers/florius.svg" alt="Florius" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/centraalbeheer.svg" alt="Centraal Beheer" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/lloyds.svg" alt="Lloyds Bank" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/asn.svg" alt="ASN Bank" loading="lazy"></li>
+              <li style="--h:52px"><img src="assets/geldverstrekkers/obvion.svg" alt="Obvion" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/bijbouwe.png" alt="Bij Bouwe" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/aegon.svg" alt="Aegon" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/allianz.svg" alt="Allianz" loading="lazy"></li>
+              <li><img src="assets/geldverstrekkers/woonnu.png" alt="WoonNu" loading="lazy"></li>
+            </ul>
+          </div>
+          <button class="marquee-toggle" type="button" aria-pressed="false" data-marquee-toggle>
+            <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+            <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg>
+            <span class="visually-hidden">Logolint pauzeren</span>
+          </button>
+        </div>
         <p class="independence-note center muted" style="text-align:center">Wij krijgen geen provisie van banken. Ons advies gaat over jou.</p>
       </div>
     </section>
 
-    <!-- 8. Reviews: VERBORGEN tot de eigenaar echte reviews aanlevert. Verwijder dan het hidden-attribuut.
-         Alleen echte reviews, met toestemming: quote, voornaam, plaats, maand/jaar. -->
-    <section class="section section-soft" id="reviews" aria-labelledby="reviews-titel" hidden>
+    <!-- 8. Reviews: echte Google-reviews (5 sterren), letterlijk overgenomen.
+         Naam als voornaam + initiaal. Score en aantal ook bijwerken in de hero en de footer. -->
+    <section class="section section-soft" id="reviews" aria-labelledby="reviews-titel">
       <div class="container">
         <div class="section-intro">
           <h2 class="h1" id="reviews-titel">Wat klanten zeggen</h2>
-          <p class="body-lg muted"><span class="ph">[score]</span> op <span class="ph">[Advieskeuze/Google]</span>, op basis van <span class="ph">[aantal]</span> reviews.</p>
+          <p class="body-lg muted"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 op Google, op basis van 5 reviews.</p>
         </div>
         <ul class="reviews">
-          <li><figure class="review"><blockquote>“[review: quote]”</blockquote><figcaption>[naam, plaats] · [maand jaar]</figcaption></figure></li>
-          <li><figure class="review"><blockquote>“[review: quote]”</blockquote><figcaption>[naam, plaats] · [maand jaar]</figcaption></figure></li>
-          <li><figure class="review"><blockquote>“[review: quote]”</blockquote><figcaption>[naam, plaats] · [maand jaar]</figcaption></figure></li>
+          <li><figure class="review"><p class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</p><blockquote>“Wat een aardige jonge heer. Denkt goed mee met je,legt je alls goed uit en helpt je met veel geduld om alles voor de aanvraag in te vullen. Ook op vragen na het bezoek aan huis word gelijk antwoord gegeven en alles opgelost. Kort om zeer vriendelijk,verstand van zaken, behulpzaam,en reageert gelijk op vragen! Dus wij zouden hem voor iedereen aanraden!!!”</blockquote><figcaption>Michiel M. · Google</figcaption></figure></li>
+          <li><figure class="review"><p class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</p><blockquote>“Uitstekende ervaring met Yord opgedaan bij het opnemen van een stukje overwaarde voor verduurzaming en verbetering van onze woning. Via een zeer prettige samenwerking wordt de hypotheek in december bij de notaris getekend.”</blockquote><figcaption>Ebel v.d. B. · Google</figcaption></figure></li>
+          <li><figure class="review"><p class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</p><blockquote>“Ontzettend fijne hypotheekverstrekker. Neemt de tijd voor je. BijYord weet je dat het goed geregeld wordt. Een aanrader voor iedereen!”</blockquote><figcaption>Farah H. · Google</figcaption></figure></li>
+          <li><figure class="review"><p class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</p><blockquote>“Zeer tevreden over de handelwijze van Yord. We kunnen hem iedereen aanbevelen. Zeer deskundig en toegankelijk. Dit is de Adviseur die je graag in wil schakelen.”</blockquote><figcaption>Stephan S. · Google</figcaption></figure></li>
+          <li><figure class="review"><p class="stars" role="img" aria-label="5 van 5 sterren">★★★★★</p><blockquote>“Heel goed geholpen door Yord bij de aankoop van mijn eerste huis. Neemt de tijd voor je om alles door te nemen en is vrijwel altijd bereikbaar om antwoord te geven op je vragen.”</blockquote><figcaption>Aron S. · Google</figcaption></figure></li>
         </ul>
+        <!-- Profiel-link uit Google Bedrijfsprofiel. Review-schrijflink: https://g.page/r/CSpBK88ZGG11EAE/review -->
+        <p class="reviews-more"><a class="btn btn-outline" href="https://g.page/r/CSpBK88ZGG11EAE" target="_blank" rel="noopener">Bekijk alle reviews op Google</a></p>
       </div>
     </section>
 
@@ -377,7 +421,7 @@
       <div class="container faq-wrap">
         <div class="stack">
           <h2 class="h1" id="vragen-titel">Vragen die we vaak horen</h2>
-          <p class="body-lg muted">Staat jouw vraag er niet bij? Bel ons gerust: <a href="tel:[telefoon]">[telefoon]</a>.</p>
+          <p class="body-lg muted">Staat jouw vraag er niet bij? Bel ons gerust: <a href="tel:+31645236143">06 45 23 61 43</a>.</p>
         </div>
         <div class="faq">
           <details>
@@ -416,8 +460,8 @@
           <p class="signature">Samen naar je sleutel.</p>
           <p class="body-lg">Laat je naam en nummer achter, dan bellen we je terug. Op werkdagen meestal binnen <span class="ph">[x]</span> uur. Het eerste gesprek is gratis en vrijblijvend.</p>
           <ul class="contact-lines">
-            <li><svg class="icon"><use href="#i-phone"/></svg><span>Liever zelf bellen? <a href="tel:[telefoon]"><strong>[telefoon]</strong></a></span></li>
-            <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:[e-mailadres]">[e-mailadres]</a></li>
+            <li><svg class="icon"><use href="#i-phone"/></svg><span>Liever zelf bellen? <a href="tel:+31645236143"><strong>06 45 23 61 43</strong></a></span></li>
+            <li><svg class="icon"><use href="#i-mail"/></svg><a href="mailto:info@bijyord.nl">info@bijyord.nl</a></li>
             <li><svg class="icon"><use href="#i-clock"/></svg><span class="ph">[openingstijden, bijv. ook 's avonds of online, als dat klopt]</span></li>
             <li><svg class="icon"><use href="#i-pin"/></svg><span class="ph">[adres / werkgebied]</span></li>
           </ul>
@@ -463,6 +507,7 @@
             <button class="btn btn-accent btn-block" type="submit">Ja, bel me terug</button>
           </div>
           <p class="full reassure">Gratis en vrijblijvend. Je zit nergens aan vast.</p>
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
           <p class="full form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -481,13 +526,13 @@
           </svg>
           <!-- Signatuurregel (docs/personality.md §4.1), ook in de hero en de afsluitende CTA. De eigenaar kiest de definitieve. -->
           <p class="signature">Samen naar je sleutel.</p>
-          <p class="small muted" style="margin-top:8px"><span class="ph">[Advieskeuze/Google score]</span></p>
+          <p class="small muted" style="margin-top:8px"><span class="stars" aria-hidden="true">★★★★★</span> 5,0 op Google · 5 reviews</p>
         </div>
         <div>
           <h2>Contact</h2>
           <ul>
-            <li><a href="tel:[telefoon]">[telefoon]</a></li>
-            <li><a href="mailto:[e-mailadres]">[e-mailadres]</a></li>
+            <li><a href="tel:+31645236143">06 45 23 61 43</a></li>
+            <li><a href="mailto:info@bijyord.nl">info@bijyord.nl</a></li>
             <li><span class="ph">[adres, regio]</span></li>
             <li><span class="ph">[openingstijden]</span></li>
           </ul>
@@ -518,7 +563,7 @@
 
   <!-- Altijd bereikbaar op mobiel -->
   <nav class="mobile-bar" aria-label="Snel contact">
-    <a class="btn btn-outline" href="tel:[telefoon]"><svg class="icon"><use href="#i-phone"/></svg>Bel</a>
+    <a class="btn btn-outline" href="tel:+31645236143"><svg class="icon"><use href="#i-phone"/></svg>Bel</a>
     <a class="btn btn-accent" href="#contact"><svg class="icon"><use href="#i-calendar"/></svg>Afspraak</a>
   </nav>
 </body>
